@@ -1,0 +1,29 @@
+{
+    "name": "ebolution/laravel-base-crud-module-creator",
+    "description": "",
+    "minimum-stability": "stable",
+    "version": "1.0.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Avanzed Cloud Develop, S.L.",
+            "email": "desarrollo@ebolution.com"
+        }
+    ],
+    "require": {
+        "ebolution/laravel-base-crud-module": "*",
+        "ebolution/laravel-module-manager": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ebolution\\BaseCrudModuleCreator\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ebolution\\BaseCrudModuleCreator\\Infrastructure\\ServicesProvider"
+            ]
+        }
+    }
+}
