@@ -20,14 +20,14 @@ class CreateModule extends Command
 
     public function handle(): void
     {
-        $vendor = $this->ask('What is the module vendor?');
-        $name = $this->ask('What is the module name?');
-        $path = $this->ask('What is the module path?');
+        $vendor = $this->ask('What is the module vendor?', 'Ebolution');
+        $name = $this->ask('What is the module name?', 'LaravelSampleEntity');
+        $path = $this->ask('What is the module path?', 'local-modules/' . strtolower($vendor) .  '/' . strtolower(preg_replace('/[A-Z]/', '-$0', lcfirst($name))));
 
-        $authorName = $this->ask('What is the author name?');
-        $authorEmail = $this->ask('What is the author email?');
-        $copyright = $this->ask('What is the copyright info?');
-        $license = $this->ask('What is the license info?');
+        $authorName = $this->ask('What is the author name?', 'Avanzed Cloud Develop, S.L.');
+        $authorEmail = $this->ask('What is the author email?', 'desarrollo@ebolution.com');
+        $copyright = $this->ask('What is the copyright info?', '© '. date("Y") . ' '. $authorName. ' - All rights reserved.');
+        $license = $this->ask('What is the license info?', 'Propietary https://ebolution.com');
 
         if (file_exists($path)) {
             $this->error('The directory already exists.');
