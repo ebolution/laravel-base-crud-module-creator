@@ -62,7 +62,7 @@ class CreateModule extends Command
         $composerJsonPath = "{$path}/composer.json";
         $composerJsonContent = json_decode(file_get_contents($composerJsonPath), true);
 
-        $composerJsonContent['name'] = strtolower($vendor) . '/laravel-' . strtolower(preg_replace('/[A-Z]/', '-$0', lcfirst($name)));
+        $composerJsonContent['name'] = strtolower($vendor) . '/' . strtolower(preg_replace('/[A-Z]/', '-$0', lcfirst($name)));
         $composerJsonContent['authors'] = [
             [
                 'name' => $authorName,
