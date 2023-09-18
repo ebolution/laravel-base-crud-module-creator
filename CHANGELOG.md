@@ -9,3 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Command to create new modules based on Base CRUD Module Scaffold
 - This CHANGELOG file to hopefully serve as an evolving example of a
   standardized open source project CHANGELOG.
+
+## [1.0.1] - 2023-09-12
+### Fixed
+- Extra 'laravel-' in the module name on composer.json
+### Added
+- Provide default values to input parameters
+
+## [1.0.2] - 2023-09-18
+### Added
+- New parametrized content: model and table

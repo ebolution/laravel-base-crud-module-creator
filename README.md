@@ -25,21 +25,23 @@ You will be prompted to provide the following information:
 1. Module vendor
 2. Module name
 3. Module path
-4. Author name
-5. Author email
-6. Copyright info
-7. License info
+4. Model name
+5. Table name
+6. Author name
+7. Author email
+8. Copyright info
+9. License info
 
 The command will then perform the following actions:
 
 1. Create a new directory at the specified module path.
 2. Clone the base CRUD module scaffold repository into the new directory.
 3. Remove the .git folder in the cloned repository.
-4. Replace occurrences of the default vendor name, module name, author, email, copyright, and license with the 
+4. Replace occurrences of the default vendor name, module name, model name, table name, author, email, copyright, and license with the 
    provided values in .php, .json, and .md files.
 5. Update the composer.json file with the new module vendor and name.
 
-Upon successful completion, the new module will be ready for use and customization.
+Upon successful completion, the new module will be ready for use and customization (look for TODO's inside the code)
 
 ## License
 

@@ -21,8 +21,10 @@ class CreateModule extends Command
     public function handle(): void
     {
         $vendor = $this->ask('What is the module vendor?', 'Ebolution');
-        $name = $this->ask('What is the module name?', 'LaravelSampleEntity');
+        $name = $this->ask('What is the module name?', 'LaravelCustomerSample');
         $path = $this->ask('What is the module path?', 'local-modules/' . strtolower($vendor) .  '/' . strtolower(preg_replace('/[A-Z]/', '-$0', lcfirst($name))));
+        $model = $this->ask('What is the model name?', 'Customer');
+        $table = $this->ask('What is the table name?', 'customers');
 
         $authorName = $this->ask('What is the author name?', 'Avanzed Cloud Develop, S.L.');
         $authorEmail = $this->ask('What is the author email?', 'desarrollo@ebolution.com');
@@ -49,14 +51,28 @@ class CreateModule extends Command
         $finder->files()->in($path)->name('*.php')->name('*.json')->name('*.md');
 
         foreach ($finder as $file) {
+            $output_path = $file->getRealPath();
+            if ($file->getFilename() === 'create_table.php') {
+                $output_path = $file->getPath() . DIRECTORY_SEPARATOR . date("Y_m_d_His") . "_create_" . $table . "_table.php";
+            } elseif ($file->getFilename() === 'BaseCrudModuleScaffoldEntity.php') {
+                $output_path = $file->getPath() . DIRECTORY_SEPARATOR . $model . ".php";
+            }
+
             $content = file_get_contents($file->getRealPath());
             $content = str_replace('Ebolution', $vendor, $content);
+            $content = str_replace('BaseCrudModuleScaffoldEntity', $model, $content);
             $content = str_replace('BaseCrudModuleScaffold', $name, $content);
+            $content = str_replace('@table_name', $table, $content);
             $content = str_replace('@module.author.name', $authorName, $content);
             $content = str_replace('@module.author.email', $authorEmail, $content);
             $content = str_replace('@module.copyright', $copyright, $content);
             $content = str_replace('@module.license', $license, $content);
-            file_put_contents($file->getRealPath(), $content);
+
+            file_put_contents($output_path, $content);
+
+            if ($output_path !== $file->getRealPath()) {
+                unlink($file->getRealPath());
+            }
         }
 
         $composerJsonPath = "{$path}/composer.json";
