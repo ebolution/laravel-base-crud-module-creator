@@ -29,7 +29,7 @@ class CreateModule extends Command
         $authorName = $this->ask('What is the author name?', 'Avanzed Cloud Develop, S.L.');
         $authorEmail = $this->ask('What is the author email?', 'desarrollo@ebolution.com');
         $copyright = $this->ask('What is the copyright info?', '© '. date("Y") . ' '. $authorName. ' - All rights reserved.');
-        $license = $this->ask('What is the license info?', 'Propietary https://ebolution.com');
+        $license = $this->ask('What is the license info?', 'Proprietary https://ebolution.com');
 
         if (file_exists($path)) {
             $this->error('The directory already exists.');
