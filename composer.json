@@ -1,6 +1,6 @@
 {
     "name": "ebolution/laravel-base-crud-module-creator",
-    "description": "",
+    "description": "Utility to create new packages based on laravel-base-crud-module",
     "minimum-stability": "stable",
     "version": "1.0.3",
     "license": "MIT",
